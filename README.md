@@ -48,6 +48,9 @@ a live progress page for multi-package plans.
   do not run in claude.ai chat.
 - macOS or Linux, with `python3` 3.9 or newer on the `PATH`. The plugin uses
   only the Python standard library.
+- On Windows, use WSL. Native Windows is not supported yet: the hooks call
+  `python3`, which a python.org install on Windows does not provide (it
+  installs `python` and `py`).
 - `git` on the `PATH`, for the branch and commit shown in the record and the
   status line. Without it those parts are left out.
 
