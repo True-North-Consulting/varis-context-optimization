@@ -79,7 +79,7 @@ def test_setup_installs_the_files_and_prints_what_is_missing(isolated, monkeypat
     data = isolated["data"]
     assert files.launcher_path(data).exists() and files.rules_path(data).exists()
     assert out.out.count("✘") == 4
-    assert f'python3 \\"{files.launcher_path(data)}\\"' in out.out
+    assert json.dumps(f'python3 "{files.launcher_path(data)}"') in out.out
     assert f"@{files.rules_path(data)}" in out.out
 
 
@@ -113,7 +113,7 @@ def test_the_launcher_runs_the_statusline(isolated):
     status = {"session_id": SESSION, "model": {"display_name": "Opus"}, "workspace": {},
               "context_window": {"context_window_size": 1000000, "current_usage": None}}
     result = subprocess.run([sys.executable, str(files.launcher_path(isolated["data"]))],
-                            input=json.dumps(status), capture_output=True, text=True, check=True)
+                            input=json.dumps(status), capture_output=True, encoding="utf-8", check=True)
     assert "waiting for the first reply" in result.stdout
 
 

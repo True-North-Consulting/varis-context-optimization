@@ -84,6 +84,7 @@ def _mentions(text: str, path: Path) -> bool:
 
 
 def _tilde(path: Path) -> str:
-    home = str(Path.home())
-    text = str(path)
-    return "~" + text[len(home):] if text.startswith(home + "/") else text
+    try:
+        return "~/" + path.relative_to(Path.home()).as_posix()
+    except ValueError:
+        return str(path)

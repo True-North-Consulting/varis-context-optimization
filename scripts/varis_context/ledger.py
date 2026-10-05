@@ -200,6 +200,9 @@ def _clip(text: str, limit: int) -> str:
 
 
 def _relative(path: str, cwd: Optional[str]) -> str:
-    if cwd and path.startswith(cwd.rstrip("/") + "/"):
-        return path[len(cwd.rstrip("/")) + 1:]
-    return path
+    if not cwd:
+        return path
+    try:
+        return str(Path(path).relative_to(cwd))
+    except ValueError:
+        return path  # outside the working dir
