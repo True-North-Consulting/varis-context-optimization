@@ -108,13 +108,12 @@ def test_startup_prunes_old_ledgers_and_state(isolated):
     assert not old.exists() and not old_state.exists() and fresh.exists()
 
 
-def test_session_start_refreshes_files_setup_wrote(isolated):
+def test_session_start_writes_the_launcher_and_rules(isolated):
     data = isolated["data"]
     session_start(start_event(isolated, "startup"), now=NOW)
-    assert not files.launcher_path(data).exists()  # not before setup
-    files.install(data)
+    assert files.launcher_path(data).exists()
     files.rules_path(data).write_text("old rules", encoding="utf-8")
-    session_start(start_event(isolated, "startup"), now=NOW)
+    session_start(start_event(isolated, "resume"), now=NOW)
     assert files.rules_path(data).read_text(encoding="utf-8") == files.RULES.read_text(encoding="utf-8")
 
 

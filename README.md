@@ -75,9 +75,8 @@ what to add for each one. **It never changes your settings itself.**
    300000 halved the cost per turn in the measurement above. Smaller is
    cheaper per turn, larger compacts less often. A value set per model with
    `/autocompact` (in `modelSettings`) is honoured too.
-2. **The status line.** `statusLine` pointing at a small launcher that setup
-   writes into the plugin's data directory. The launcher survives plugin
-   updates.
+2. **The status line.** `statusLine` pointing at a small launcher the plugin
+   keeps in its data directory. The launcher survives plugin updates.
 3. **Permission to write the ledger.** A `Read` and an `Edit` rule for the
    plugin's `ledgers/` folder. Without them Claude asks before each ledger
    update.
@@ -134,8 +133,8 @@ working directory.
 
 - `ledgers/<session>.md`, written by Claude, not by the plugin;
 - `state/<session>.json`, which reminders have been given;
-- `statusline.sh` and `rules.md`, written by `setup` and refreshed at each
-  session start once they exist.
+- `statusline.sh` and `rules.md`, rewritten at each session start when the
+  installed version changed them.
 
 It deletes ledgers and state files that have not been touched for 30 days, at
 the start of a new session.

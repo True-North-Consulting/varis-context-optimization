@@ -72,7 +72,7 @@ def session_start(event: dict, now: Optional[float] = None) -> str:
     source = event["source"]
     ledger = ledger_path(event["session_id"])
     ledger.parent.mkdir(parents=True, exist_ok=True)
-    files.refresh(data_dir())
+    files.install(data_dir())
     if source == "startup":
         prune(now)
     if source != "compact":

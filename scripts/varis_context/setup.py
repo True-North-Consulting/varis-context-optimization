@@ -36,15 +36,15 @@ def setup(data: Path, project_dir: Optional[str]) -> str:
 
     snippet = {
         "autoCompactWindow": window or RECOMMENDED_WINDOW,
-        "statusLine": {"type": "command", "command": f"sh {shlex.quote(str(launcher))}"},
+        "statusLine": {"type": "command", "command": f"sh {shlex.quote(launcher.as_posix())}"},
         "permissions": {"allow": allow_rules},
     }
     checks = [
         _check(window is not None,
                f"compaction window: {window:,} tokens (compacts at about {compaction_point(window):,})"
                if window else "compaction window: not set — the model's default applies (about 967k on 1M models)"),
-        _check(str(launcher) in status_command, "status line: " + (
-            "this plugin's launcher" if str(launcher) in status_command else "not this plugin's")),
+        _check(_mentions(status_command, launcher), "status line: " + (
+            "this plugin's launcher" if _mentions(status_command, launcher) else "not this plugin's")),
         _check(all(any(_mentions(rule, data) and rule.startswith(tool) for rule in allowed)
                    for tool in ("Read(", "Edit(")),
                "ledger reads and writes allowed without a prompt"),
@@ -80,8 +80,8 @@ def _json(path: Path) -> dict:
 
 
 def _mentions(text: str, path: Path) -> bool:
-    """Whether `text` names `path`, written out or with `~`."""
-    return str(path) in text or _tilde(path) in text
+    """Whether `text` names `path`: written out, with forward slashes or with `~`."""
+    return any(form in text for form in (str(path), path.as_posix(), _tilde(path)))
 
 
 def _tilde(path: Path) -> str:
