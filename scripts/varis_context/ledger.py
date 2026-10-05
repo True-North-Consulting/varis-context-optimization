@@ -64,8 +64,7 @@ def rule(ledger: Path) -> str:
 
 
 def grep_command(transcript: str) -> str:
-    script = Path(__file__).resolve().parents[1] / "context_optimization.py"
-    return f"python3 '{script}' grep '{transcript}' '<regex>'"
+    return files.command("grep", transcript, "<regex>")
 
 
 def session_start(event: dict, now: Optional[float] = None) -> str:

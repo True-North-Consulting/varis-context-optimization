@@ -8,25 +8,30 @@ each session start refreshes them, but only once `setup` has created them.
 
 from __future__ import annotations
 
+import shlex
 from pathlib import Path
 
 PLUGIN_ROOT = Path(__file__).resolve().parents[2]
-ENTRY = PLUGIN_ROOT / "scripts" / "context_optimization.py"
+RUN = PLUGIN_ROOT / "scripts" / "run.sh"
 RULES = PLUGIN_ROOT / "rules.md"
 
 LAUNCHER = """\
-#!/usr/bin/env python3
+#!/bin/sh
 # Written by varis-context-optimization; refreshed at each session start.
-# Runs the statusline of the installed plugin version.
-import os, runpy, sys
-os.environ.setdefault("CLAUDE_PLUGIN_DATA", {data!r})
-sys.argv = [sys.argv[0], "statusline"]
-runpy.run_path({entry!r}, run_name="__main__")
+# Runs the status line of the installed plugin version.
+CLAUDE_PLUGIN_DATA=${{CLAUDE_PLUGIN_DATA:-{data}}}
+export CLAUDE_PLUGIN_DATA
+exec sh {run} statusline
 """
 
 
+def command(*args: object) -> str:
+    """A shell command line running the plugin; it works in Git Bash too."""
+    return " ".join(["sh", shlex.quote(str(RUN))] + [shlex.quote(str(a)) for a in args])
+
+
 def launcher_path(data: Path) -> Path:
-    return data / "statusline.py"
+    return data / "statusline.sh"
 
 
 def rules_path(data: Path) -> Path:
@@ -35,7 +40,7 @@ def rules_path(data: Path) -> Path:
 
 def install(data: Path) -> None:
     data.mkdir(parents=True, exist_ok=True)
-    _write_if_changed(launcher_path(data), LAUNCHER.format(data=str(data), entry=str(ENTRY)))
+    _write_if_changed(launcher_path(data), LAUNCHER.format(data=shlex.quote(str(data)), run=shlex.quote(str(RUN))))
     _write_if_changed(rules_path(data), RULES.read_text(encoding="utf-8"))
 
 

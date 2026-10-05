@@ -5,7 +5,7 @@ description: Check and print the settings Varis Context Optimization needs (comp
 Run this command and show its output to the user unchanged:
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/scripts/context_optimization.py" setup --data "${CLAUDE_PLUGIN_DATA}"
+sh "${CLAUDE_PLUGIN_ROOT}/scripts/run.sh" setup --data "${CLAUDE_PLUGIN_DATA}"
 ```
 
 Then explain each line marked ✘ in one sentence. Do not edit any settings file

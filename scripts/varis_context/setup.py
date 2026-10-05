@@ -10,6 +10,7 @@ It never edits a settings file or CLAUDE.md itself.
 from __future__ import annotations
 
 import json
+import shlex
 from pathlib import Path
 from typing import Optional
 
@@ -35,7 +36,7 @@ def setup(data: Path, project_dir: Optional[str]) -> str:
 
     snippet = {
         "autoCompactWindow": window or RECOMMENDED_WINDOW,
-        "statusLine": {"type": "command", "command": f'python3 "{launcher}"'},
+        "statusLine": {"type": "command", "command": f"sh {shlex.quote(str(launcher))}"},
         "permissions": {"allow": allow_rules},
     }
     checks = [

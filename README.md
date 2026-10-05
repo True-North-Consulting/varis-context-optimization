@@ -46,11 +46,12 @@ a live progress page for multi-package plans.
 
 - Claude Code (the CLI, the desktop app or the IDE extensions). Plugins' hooks
   do not run in claude.ai chat.
-- macOS or Linux, with `python3` 3.9 or newer on the `PATH`. The plugin uses
-  only the Python standard library.
-- On Windows, use WSL. Native Windows is not supported yet: the hooks call
-  `python3`, which a python.org install on Windows does not provide (it
-  installs `python` and `py`).
+- macOS, Linux or Windows, with Python 3.9 or newer on the `PATH` as
+  `python3`, `python` or `py`. The plugin uses only the Python standard
+  library.
+- On Windows, Git for Windows: Claude Code then runs hooks in Git Bash, which
+  the plugin's starter script needs. Without it Claude Code falls back to
+  PowerShell, where the plugin does not run. WSL works too.
 - `git` on the `PATH`, for the branch and commit shown in the record and the
   status line. Without it those parts are left out.
 
@@ -104,7 +105,9 @@ counted by the day they started.
 
 Everything stays on your machine. The plugin makes no network requests.
 
-**Runs.** `python3 scripts/context_optimization.py` runs on these events:
+**Runs.** `sh scripts/run.sh` runs on these events. It starts
+`scripts/context_optimization.py` with the first of `python3`, `python` and
+`py` that is Python 3.9 or newer:
 
 - `SessionStart`: injects the ledger rule. After a compaction it also injects
   the ledger, the record and the search command, in under 10,000 characters.
@@ -131,7 +134,7 @@ working directory.
 
 - `ledgers/<session>.md`, written by Claude, not by the plugin;
 - `state/<session>.json`, which reminders have been given;
-- `statusline.py` and `rules.md`, written by `setup` and refreshed at each
+- `statusline.sh` and `rules.md`, written by `setup` and refreshed at each
   session start once they exist.
 
 It deletes ledgers and state files that have not been touched for 30 days, at

@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/context_optimization.py\" session-start",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/run.sh\" session-start",
             "timeout": 10
           }
         ]
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/context_optimization.py\" watch",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/run.sh\" watch",
             "timeout": 10
           }
         ]
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/context_optimization.py\" watch",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/run.sh\" watch",
             "timeout": 10
           }
         ]

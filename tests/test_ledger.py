@@ -42,7 +42,7 @@ def test_after_compaction_the_ledger_record_and_search_come_back(isolated):
     assert "“Bitte den Export reparieren”" in text
     assert "Files edited, newest first: /p/export.py" in text
     assert "$ pytest -q" in text
-    assert "context_optimization.py' grep '" in text
+    assert "/scripts/run.sh grep " in text
     assert len(text) <= CONTEXT_MAX_CHARS
 
 

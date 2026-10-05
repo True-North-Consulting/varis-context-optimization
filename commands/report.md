@@ -6,7 +6,7 @@ argument-hint: "[--since YYYY-MM-DD] [--until YYYY-MM-DD]"
 Run this command and show its output to the user:
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/scripts/context_optimization.py" report $ARGUMENTS
+sh "${CLAUDE_PLUGIN_ROOT}/scripts/run.sh" report $ARGUMENTS
 ```
 
 Costs are relative units (input 1, cache read 0.1, output 5), so a before and
