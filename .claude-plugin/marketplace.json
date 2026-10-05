@@ -1,0 +1,22 @@
+{
+  "name": "true-north-consulting",
+  "description": "Claude Code plugins by True North Consulting.",
+  "owner": {
+    "name": "True North Consulting"
+  },
+  "plugins": [
+    {
+      "name": "varis-context-optimization",
+      "source": "./",
+      "description": "Auto-compaction that keeps what matters: a session ledger re-injected after every compaction, a warning before it, and a context statusline."
+    },
+    {
+      "name": "varis-plan-tracker",
+      "source": {
+        "source": "github",
+        "repo": "True-North-Consulting/varis-plan-tracker"
+      },
+      "description": "A live progress tracker for multi-package plans, published as a private claude.ai artifact."
+    }
+  ]
+}
