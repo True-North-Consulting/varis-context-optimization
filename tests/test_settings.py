@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 from conftest import write_settings
 
@@ -65,12 +67,16 @@ def test_window_rejects_broken_settings_json(isolated):
 
 def test_an_unreadable_managed_file_is_skipped(isolated, monkeypatch):
     write_settings(isolated["managed"], {"autoCompactWindow": 350000})
-    isolated["managed"].chmod(0)
     write_settings(isolated["home"] / ".claude" / "settings.json", {"autoCompactWindow": 300000})
-    try:
-        assert compact_window(str(isolated["project"])) == 300000
-    finally:
-        isolated["managed"].chmod(0o644)
+    read_text = Path.read_text
+
+    def refuse_managed(path, *args, **kwargs):
+        if path == isolated["managed"]:
+            raise PermissionError(path)
+        return read_text(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", refuse_managed)
+    assert compact_window(str(isolated["project"])) == 300000
 
 
 def test_the_compaction_and_warning_points():

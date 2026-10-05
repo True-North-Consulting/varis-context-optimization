@@ -29,6 +29,7 @@ def isolated(tmp_path, monkeypatch):
     project = tmp_path / "project"
     (project / ".claude").mkdir(parents=True)
     monkeypatch.setenv("HOME", str(home))
+    monkeypatch.setenv("USERPROFILE", str(home))
     monkeypatch.setenv("CLAUDE_PLUGIN_DATA", str(tmp_path / "data"))
     monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(project))
     monkeypatch.delenv("CLAUDE_CODE_AUTO_COMPACT_WINDOW", raising=False)
