@@ -57,12 +57,21 @@ a live progress page for multi-package plans.
 
 ## Install
 
+### From the Claude plugin directory (review pending)
+
+The plugin has been submitted to Anthropic's plugin directory and is waiting
+for review. Once it is listed, install it from the **Discover** tab in
+`/plugin` in Claude Code, or from [claude.ai/directory](https://claude.ai/directory).
+There is no marketplace to add first. Until then, use the marketplace below.
+
+### From the True North Consulting marketplace
+
 ```
 /plugin marketplace add True-North-Consulting/varis-context-optimization
 /plugin install varis-context-optimization@true-north-consulting
 ```
 
-Then run the setup command once in a new session:
+Either way, run the setup command once in a new session:
 
 ```
 /varis-context-optimization:setup
@@ -128,8 +137,10 @@ working directory.
 - for `setup`, `~/.claude/settings.json` and `~/.claude/CLAUDE.md`, to check
   them.
 
-**Writes**, all in the plugin's data directory
-(`~/.claude/plugins/data/varis-context-optimization-true-north-consulting/`):
+**Writes**, all in the plugin's data directory. Claude Code names it after
+the plugin and the marketplace it came from, for example
+`~/.claude/plugins/data/varis-context-optimization-true-north-consulting/`;
+`/varis-context-optimization:setup` prints the exact path:
 
 - `ledgers/<session>.md`, written by Claude, not by the plugin;
 - `state/<session>.json`, which reminders have been given;
