@@ -6,6 +6,7 @@
   "author": { "name": "True North Consulting" },
   "homepage": "https://github.com/True-North-Consulting/varis-context-optimization",
   "repository": "https://github.com/True-North-Consulting/varis-context-optimization",
+  "privacyPolicyUrl": "https://github.com/True-North-Consulting/varis-context-optimization/blob/main/PRIVACY.md",
   "license": "MIT",
   "keywords": ["context", "compaction", "cost", "statusline", "memory"]
 }
