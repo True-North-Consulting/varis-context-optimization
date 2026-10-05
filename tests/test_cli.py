@@ -85,7 +85,7 @@ def test_setup_installs_the_files_and_prints_what_is_missing(isolated, monkeypat
     data = isolated["data"]
     assert files.launcher_path(data).exists() and files.rules_path(data).exists()
     assert out.out.count("✘") == 4
-    assert json.dumps(f"sh {shlex.quote(str(files.launcher_path(data)))}") in out.out
+    assert json.dumps(f"sh {shlex.quote(files.launcher_path(data).as_posix())}") in out.out
     assert f"@{files.rules_path(data)}" in out.out
 
 
