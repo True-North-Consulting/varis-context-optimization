@@ -1,12 +1,12 @@
 {
-  "name": "varis-context-optimization",
-  "displayName": "Varis Context Optimization",
-  "version": "1.1.0",
+  "name": "tnc-context-optimization",
+  "displayName": "TNC Context Optimization",
+  "version": "2.0.0",
   "description": "Auto-compaction that keeps what matters: a session ledger and a verbatim record re-injected after every compaction, a warning before it, a search into the full transcript, and a statusline that shows how close the next compaction is.",
   "author": { "name": "True North Consulting" },
-  "homepage": "https://github.com/True-North-Consulting/varis-context-optimization",
-  "repository": "https://github.com/True-North-Consulting/varis-context-optimization",
-  "privacyPolicyUrl": "https://github.com/True-North-Consulting/varis-context-optimization/blob/main/PRIVACY.md",
+  "homepage": "https://github.com/True-North-Consulting/tnc-context-optimization",
+  "repository": "https://github.com/True-North-Consulting/tnc-context-optimization",
+  "privacyPolicyUrl": "https://github.com/True-North-Consulting/tnc-context-optimization/blob/main/PRIVACY.md",
   "license": "MIT",
   "keywords": ["context", "compaction", "cost", "statusline", "memory"]
 }

@@ -1,6 +1,6 @@
 # Privacy
 
-Varis Context Optimization is published by True North Consulting. It runs
+TNC Context Optimization is published by True North Consulting. It runs
 entirely on your machine.
 
 **What we receive: nothing.** The plugin makes no network requests and has no
@@ -10,8 +10,8 @@ server. We collect no data, no telemetry and no usage statistics.
 the plugin reads the session transcript Claude Code passes to it and keeps
 files in its data directory. Claude Code names that directory after the
 plugin and the marketplace it came from, for example
-`~/.claude/plugins/data/varis-context-optimization-true-north-consulting/`;
-`/varis-context-optimization:setup` prints the exact path. It holds
+`~/.claude/plugins/data/tnc-context-optimization-true-north-consulting/`;
+`/tnc-context-optimization:setup` prints the exact path. It holds
 the ledger Claude writes and a small state file per session. These hold your
 own messages and file paths in plain text, so they can contain whatever you
 typed, including names or email addresses. Files untouched for 30 days are
@@ -25,4 +25,4 @@ conversation, that text goes to the model under the terms of your Claude
 account. The plugin sends it nowhere else.
 
 **Contact.** Questions or concerns: open an issue at
-https://github.com/True-North-Consulting/varis-context-optimization/issues.
+https://github.com/True-North-Consulting/tnc-context-optimization/issues.

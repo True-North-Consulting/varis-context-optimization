@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Varis Context Optimization: auto-compaction that keeps what matters.
+"""TNC Context Optimization: auto-compaction that keeps what matters.
 
 Claude Code compacts on its own once the context nears the
 `autoCompactWindow`; the summary it writes is lossy. This keeps the important
@@ -39,13 +39,13 @@ from typing import Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from varis_context import PLUGIN_NAME, HookError  # noqa: E402
-from varis_context.ledger import session_start  # noqa: E402
-from varis_context.report import report  # noqa: E402
-from varis_context.setup import setup  # noqa: E402
-from varis_context.statusline import statusline  # noqa: E402
-from varis_context.transcript import grep  # noqa: E402
-from varis_context.watch import watch  # noqa: E402
+from tnc_context import PLUGIN_NAME, HookError  # noqa: E402
+from tnc_context.ledger import session_start  # noqa: E402
+from tnc_context.report import report  # noqa: E402
+from tnc_context.setup import setup  # noqa: E402
+from tnc_context.statusline import statusline  # noqa: E402
+from tnc_context.transcript import grep  # noqa: E402
+from tnc_context.watch import watch  # noqa: E402
 
 
 def hook_output(event_name: str, context: Optional[str]) -> None:

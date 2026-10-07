@@ -14,8 +14,8 @@ import pytest
 
 from conftest import ROOT, SESSION, assistant, user, write_settings, write_transcript
 
-from varis_context import files
-from varis_context.report import report, transcripts_dir
+from tnc_context import files
+from tnc_context.report import report, transcripts_dir
 
 SH = shutil.which("sh")
 _spec = importlib.util.spec_from_file_location("context_optimization", ROOT / "scripts" / "context_optimization.py")
@@ -49,7 +49,7 @@ def test_a_quiet_hook_prints_nothing(isolated, window, monkeypatch, capsys):
 def test_unexpected_input_is_reported_on_stderr(isolated, monkeypatch, capsys):
     code, out = run_main(["session-start"], {"session_id": SESSION}, monkeypatch, capsys)
     assert code == 1
-    assert out.err.startswith("varis-context-optimization session-start:")
+    assert out.err.startswith("tnc-context-optimization session-start:")
     assert out.out == ""
 
 

@@ -6,9 +6,9 @@ import os
 import pytest
 from conftest import BOUNDARY, SESSION, assistant, user, write_transcript
 
-from varis_context import HookError
-from varis_context.ledger import ledger_path, state_path
-from varis_context.watch import watch
+from tnc_context import HookError
+from tnc_context.ledger import ledger_path, state_path
+from tnc_context.watch import watch
 
 
 def event(transcript, **extra) -> dict:

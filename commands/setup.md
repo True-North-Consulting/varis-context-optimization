@@ -1,5 +1,5 @@
 ---
-description: Check and print the settings Varis Context Optimization needs (compaction window, statusline, ledger permissions, compact rules)
+description: Check and print the settings TNC Context Optimization needs (compaction window, statusline, ledger permissions, compact rules)
 ---
 
 Run this command and show its output to the user unchanged:

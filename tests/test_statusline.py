@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 from conftest import SESSION, write_settings
 
-from varis_context.statusline import RED, YELLOW, statusline
+from tnc_context.statusline import RED, YELLOW, statusline
 
 NOW = 1_800_000_000.0
 
@@ -75,7 +75,7 @@ def test_the_ledger_age_shows_that_the_plugin_runs(isolated, window, monkeypatch
     data = status_input(isolated["project"], 50000)
     assert rows(data)[0].endswith("no ledger yet")
     ledger = (isolated["home"] / ".claude" / "plugins" / "data"
-              / "varis-context-optimization-true-north-consulting" / "ledgers" / f"{SESSION}.md")
+              / "tnc-context-optimization-true-north-consulting" / "ledgers" / f"{SESSION}.md")
     ledger.parent.mkdir(parents=True)
     ledger.write_text("## Goal", encoding="utf-8")
     os.utime(ledger, (NOW - 240, NOW - 240))

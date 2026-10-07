@@ -6,10 +6,10 @@ import subprocess
 import pytest
 from conftest import SESSION, assistant, user, write_transcript
 
-from varis_context import HookError, files
-from varis_context.ledger import (CONTEXT_MAX_CHARS, LEDGER_MAX_CHARS, RETENTION_DAYS, ledger_path,
+from tnc_context import HookError, files
+from tnc_context.ledger import (CONTEXT_MAX_CHARS, LEDGER_MAX_CHARS, RETENTION_DAYS, ledger_path,
                                 recorded, session_start, state_path)
-from varis_context.transcript import Activity
+from tnc_context.transcript import Activity
 
 NOW = 1_800_000_000.0
 

@@ -5,8 +5,8 @@ from pathlib import Path
 import pytest
 from conftest import write_settings
 
-from varis_context import HookError
-from varis_context.settings import compact_window, compaction_point, warn_point
+from tnc_context import HookError
+from tnc_context.settings import compact_window, compaction_point, warn_point
 
 
 def test_window_unset_everywhere_is_none(isolated):

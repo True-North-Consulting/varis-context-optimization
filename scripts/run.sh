@@ -13,5 +13,5 @@ for python in python3 python py; do
     exec "$python" "$dir/context_optimization.py" "$@"
   fi
 done
-echo "varis-context-optimization: no Python 3.9 or newer found (tried python3, python, py)" >&2
+echo "tnc-context-optimization: no Python 3.9 or newer found (tried python3, python, py)" >&2
 exit 1

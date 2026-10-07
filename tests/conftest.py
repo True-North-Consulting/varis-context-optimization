@@ -16,7 +16,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from varis_context import settings  # noqa: E402
+from tnc_context import settings  # noqa: E402
 
 SESSION = "0a1b2c3d-session"
 BOUNDARY = {"type": "system", "subtype": "compact_boundary"}

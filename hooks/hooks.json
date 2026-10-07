@@ -1,5 +1,5 @@
 {
-  "description": "Varis Context Optimization: the session ledger across auto-compaction (see README).",
+  "description": "TNC Context Optimization: the session ledger across auto-compaction (see README).",
   "hooks": {
     "SessionStart": [
       {

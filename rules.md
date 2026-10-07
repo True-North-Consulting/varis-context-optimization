@@ -2,7 +2,7 @@
 
 Every turn re-reads the whole context, so its size is what a long session
 costs; auto-compaction replaces it with a summary once it reaches the
-`autoCompactWindow`. The Varis Context Optimization plugin's session ledger
+`autoCompactWindow`. The TNC Context Optimization plugin's session ledger
 carries the important state across that compaction (the SessionStart note
 names the file).
 

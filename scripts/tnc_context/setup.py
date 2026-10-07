@@ -51,7 +51,7 @@ def setup(data: Path, project_dir: Optional[str]) -> str:
         _check(imported, f"compact rules imported in {_tilde(claude_md)}"),
     ]
     return "\n".join([
-        "Varis Context Optimization — setup",
+        "TNC Context Optimization — setup",
         "",
         *checks,
         "",

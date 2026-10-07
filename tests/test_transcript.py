@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from conftest import BOUNDARY, assistant, user, write_transcript
 
-from varis_context.transcript import TAIL_START, activity, grep, latest_call
+from tnc_context.transcript import TAIL_START, activity, grep, latest_call
 
 
 def test_the_latest_main_thread_call_with_its_model(isolated):

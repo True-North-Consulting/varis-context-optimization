@@ -18,7 +18,7 @@ RULES = PLUGIN_ROOT / "rules.md"
 
 LAUNCHER = """\
 #!/bin/sh
-# Written by varis-context-optimization; refreshed at each session start.
+# Written by tnc-context-optimization; refreshed at each session start.
 # Runs the status line of the installed plugin version.
 CLAUDE_PLUGIN_DATA=${{CLAUDE_PLUGIN_DATA:-{data}}}
 export CLAUDE_PLUGIN_DATA

@@ -1,4 +1,4 @@
-# Varis Context Optimization
+# TNC Context Optimization
 
 A Claude Code plugin that makes a smaller compaction window safe to use.
 
@@ -35,11 +35,11 @@ Over two days of real sessions on one team's codebase, with the plugin and a
 | Share of spend at 300k context or more   | 75 %   | 0 %    |
 | Sessions that grew past 400k             | 24     | 0      |
 
-Your numbers will differ. The `/varis-context-optimization:report` command
+Your numbers will differ. The `/tnc-context-optimization:report` command
 measures your own sessions before and after (see below).
 
 The same marketplace also offers
-[varis-plan-tracker](https://github.com/True-North-Consulting/varis-plan-tracker),
+[tnc-plan-tracker](https://github.com/True-North-Consulting/tnc-plan-tracker),
 a live progress page for multi-package plans.
 
 ## Requirements
@@ -67,14 +67,14 @@ There is no marketplace to add first. Until then, use the marketplace below.
 ### From the True North Consulting marketplace
 
 ```
-/plugin marketplace add True-North-Consulting/varis-context-optimization
-/plugin install varis-context-optimization@true-north-consulting
+/plugin marketplace add True-North-Consulting/tnc-context-optimization
+/plugin install tnc-context-optimization@true-north-consulting
 ```
 
 Either way, run the setup command once in a new session:
 
 ```
-/varis-context-optimization:setup
+/tnc-context-optimization:setup
 ```
 
 It checks four things a plugin is not allowed to set for itself and prints
@@ -96,11 +96,20 @@ what to add for each one. **It never changes your settings itself.**
 
 Settings take effect in sessions started afterwards.
 
+### Upgrading from varis-context-optimization
+
+The plugin was called `varis-context-optimization` before 2.0.0. The new name
+gives it a new data directory, so uninstall the old plugin, install
+`tnc-context-optimization`, and run `/tnc-context-optimization:setup` again:
+the status line, the ledger permissions and the `@…/rules.md` line all name the
+data directory. Ledgers of earlier sessions stay in
+`~/.claude/plugins/data/varis-context-optimization-true-north-consulting/`.
+
 ## Measure your own savings
 
 ```
-/varis-context-optimization:report --until 2026-10-01
-/varis-context-optimization:report --since 2026-10-01
+/tnc-context-optimization:report --until 2026-10-01
+/tnc-context-optimization:report --since 2026-10-01
 ```
 
 This reads the current project's transcripts and prints the cost per turn,
@@ -139,8 +148,8 @@ working directory.
 
 **Writes**, all in the plugin's data directory. Claude Code names it after
 the plugin and the marketplace it came from, for example
-`~/.claude/plugins/data/varis-context-optimization-true-north-consulting/`;
-`/varis-context-optimization:setup` prints the exact path:
+`~/.claude/plugins/data/tnc-context-optimization-true-north-consulting/`;
+`/tnc-context-optimization:setup` prints the exact path:
 
 - `ledgers/<session>.md`, written by Claude, not by the plugin;
 - `state/<session>.json`, which reminders have been given;
